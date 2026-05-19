@@ -15,17 +15,18 @@
 
         /* 網頁背景：在此處更換背景圖片 URL，或改為 linear-gradient 漸層色 */
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            background-attachment: fixed;
-            background-size: cover;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+               background-image: url('牛牛.png'); /* 👈 填入你在 GitHub 上傳的背景圖片檔名 */
+               background-position: center;     /* 讓圖片居中 */
+               background-repeat: no-repeat;    /* 圖片不重複拼貼 */
+               background-attachment: fixed;    /* 背景固定，滑動時不會跟著滾動 */
+               background-size: cover;          /* 讓圖片自動鋪滿整個螢幕 */
+               color: #4a4a4a;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               min-height: 100vh;
+               padding: 20px;
         }
-
         /* 個人名片外殼 */
         .profile-card {
             background: rgba(255, 255, 255, 0.9);
