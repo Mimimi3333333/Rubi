@@ -72,11 +72,11 @@
         .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-        /* ✨ 修正：更改為三欄網格，讓三個按鈕擠在同一行 ✨ */
+        /* 三欄網格，讓三個按鈕擠在同一行 */
         .nav-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr; /* 👈 改成 3 欄 */
-            gap: 10px; /* 縮小間距，讓手機版排版更舒適 */
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
             margin-top: 15px;
         }
         .nav-item {
@@ -86,11 +86,7 @@
             cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
         .nav-item:hover { transform: translateY(-4px); box-shadow: 0 6px 12px rgba(254, 91, 172, 0.15); border-color: #fecfef; }
-        
-        /* 稍微縮小按鈕內的圖片高度，避免太長 */
         .nav-img { width: 100%; height: 75px; object-fit: cover; display: block; }
-        
-        /* 稍微縮小按鈕文字大小，確保手機上不會換行擠歪 */
         .nav-text { padding: 8px 5px; color: #4a5568; font-weight: bold; display: block; font-size: 12px; }
 
         /* 展示盒 */
@@ -101,15 +97,29 @@
             color: #4a5568; font-size: 14px; line-height: 1.6;
         }
 
-        /* 導航按鈕 */
-        .back-btn-group { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 20px; }
+        /* ✨ 修正：讓底部按鈕可以自動排列，並縮小一點點避免太擠 ✨ */
+        .back-btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 20px;
+        }
         .back-btn {
-            padding: 10px 20px; background: #ff9a9e;
-            color: white; border: none; border-radius: 50px;
-            font-weight: bold; cursor: pointer; font-size: 13px;
-            transition: 0.2s; box-shadow: 0 2px 6px rgba(255, 154, 158, 0.3);
+            padding: 10px 16px;
+            background: #ff9a9e;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 12px;
+            transition: 0.2s;
+            box-shadow: 0 2px 6px rgba(255, 154, 158, 0.2);
         }
         .back-btn:hover { background: #fe5bac; }
+        .back-btn.secondary { background: #a1c4fd; box-shadow: 0 2px 6px rgba(161, 196, 253, 0.3); }
+        .back-btn.secondary:hover { background: #764ba2; }
 
         /* 計時器樣式 */
         .timer-container { text-align: center; padding: 10px 0; }
@@ -166,7 +176,8 @@
         </div>
         <div class="back-btn-group">
             <button class="back-btn" onclick="showPage('home')">🏠 回首頁</button>
-            <button class="back-btn" style="background: #a1c4fd;" onclick="showPage('pageB')">➡️ 去介面 B</button>
+            <button class="back-btn secondary" onclick="showPage('pageB')">➡️ 去介面 B</button>
+            <button class="back-btn secondary" onclick="showPage('pageC')">➡️ 去介面 C</button>
         </div>
     </div>
 
@@ -178,8 +189,9 @@
             <p style="margin-top: 5px; color: #718096;">可以用來放喜歡的連結、音樂清單，或是任何你感興趣的東西！</p>
         </div>
         <div class="back-btn-group">
+            <button class="back-btn secondary" onclick="showPage('pageA')">⬅️ 去介面 A</button>
             <button class="back-btn" onclick="showPage('home')">🏠 回首頁</button>
-            <button class="back-btn" style="background: #a1c4fd;" onclick="showPage('pageC')">➡️ 去介面 C</button>
+            <button class="back-btn secondary" onclick="showPage('pageC')">➡️ 去介面 C</button>
         </div>
     </div>
 
@@ -194,10 +206,10 @@
                 <div class="timer-time" id="time-count">00 小時 00 分鐘 00 秒</div>
             </div>
         </div>
-
         <div class="back-btn-group">
+            <button class="back-btn secondary" onclick="showPage('pageA')">⬅️ 去介面 A</button>
+            <button class="back-btn secondary" onclick="showPage('pageB')">⬅️ 去介面 B</button>
             <button class="back-btn" onclick="showPage('home')">🏠 回首頁</button>
-            <button class="back-btn" style="background: #a1c4fd;" onclick="showPage('pageA')">➡️ 去介面 A</button>
         </div>
     </div>
 
