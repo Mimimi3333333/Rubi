@@ -114,7 +114,7 @@
             border: 0;
         }
 
-        /* ✨ 新增：圖文按鈕網格排版 ✨ */
+        /* 圖文按鈕網格排版 */
         .nav-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -191,6 +191,40 @@
         .back-btn:hover {
             background: #fe5bac;
         }
+
+        /* ⏳ 計時器專屬樣式 ⏳ */
+        .timer-container {
+            text-align: center;
+            padding: 10px 0;
+        }
+        
+        /* 天數大字樣式 */
+        .timer-days {
+            font-size: 48px;
+            font-weight: bold;
+            color: #fe5bac; /* 配合你設定的粉色系 */
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .timer-days-unit {
+            font-size: 18px;
+            color: #4a5568;
+            font-weight: normal;
+            margin-left: 4px;
+        }
+
+        /* 時分秒小字樣式 */
+        .timer-time {
+            font-size: 16px;
+            color: #718096;
+            letter-spacing: 1px;
+            background: #f7fafc;
+            padding: 8px 15px;
+            border-radius: 8px;
+            display: inline-block;
+            border: 1px solid #edf2f7;
+        }
     </style>
 </head>
 <body>
@@ -250,6 +284,15 @@
         <p class="bio">第三個展示空間</p>
         
         <div class="content-box">
+            <p style="text-align: center; font-weight: bold; color: #4a5568; margin-bottom: 10px;">⏳ 築夢計時器</p>
+            
+            <div class="timer-container">
+                <span class="timer-days" id="days-count">0<span class="timer-days-unit">天</span></span>
+                <div class="timer-time" id="time-count">00 小時 00 分鐘 00 秒</div>
+            </div>
+        </div>
+
+        <div class="content-box">
             <p><strong>🍰 這裡可以放你想放的其他東西：</strong></p>
             <p style="margin-top: 5px; color: #718096;">像是清單、或者是其他的連結與音樂紀錄。</p>
         </div>
@@ -262,17 +305,42 @@
 
 
     <script>
+        // 介面切換邏輯
         function showPage(pageId) {
-            // 隱藏全部介面
             const pages = document.querySelectorAll('.profile-card');
             pages.forEach(page => {
                 page.classList.remove('active');
             });
-            // 秀出點選的介面
             document.getElementById(pageId).classList.add('active');
-            // 讓頁面切換時自動回到最上方
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // ⏳ 2021-01-11 計時器邏輯 ⏳
+        const startDate = new Date("2021-01-11T00:00:00").getTime();
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const difference = now - startDate;
+
+            // 計算 天、時、分、秒
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            // 補零功能（例如：5秒變成 05秒）
+            const formatHours = hours < 10 ? "0" + hours : hours;
+            const formatMinutes = minutes < 10 ? "0" + minutes : minutes;
+            const formatSeconds = seconds < 10 ? "0" + seconds : seconds;
+
+            // 渲染到網頁畫面上
+            document.getElementById("days-count").innerHTML = days + '<span class="timer-days-unit">天</span>';
+            document.getElementById("time-count").innerText = `${formatHours} 小時 ${formatMinutes} 分鐘 ${formatSeconds} 秒`;
+        }
+
+        // 啟動計時器並設定每秒(1000毫秒)更新一次
+        updateTimer();
+        setInterval(updateTimer, 1000);
     </script>
 
 </body>
