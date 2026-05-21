@@ -86,7 +86,14 @@
             cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
         .nav-item:hover { transform: translateY(-4px); box-shadow: 0 6px 12px rgba(254, 91, 172, 0.15); border-color: #fecfef; }
-        .nav-img { width: 100%; height: 75px; object-fit: cover; display: block; }
+        
+        /* ✨ 修正：將寬高比設為 1:1，強制變成完美正方形 ✨ */
+        .nav-img { 
+            width: 100%; 
+            aspect-ratio: 1 / 1; 
+            object-fit: cover; 
+            display: block; 
+        }
         .nav-text { padding: 8px 5px; color: #4a5568; font-weight: bold; display: block; font-size: 12px; }
 
         /* 展示盒 */
@@ -129,151 +136,4 @@
 
         /* 計時器樣式 */
         .timer-container { text-align: center; padding: 10px 0; }
-        .timer-days { font-size: 48px; font-weight: bold; color: #fe5bac; display: block; margin-bottom: 5px; }
-        .timer-days-unit { font-size: 18px; color: #4a5568; font-weight: normal; margin-left: 4px; }
-        .timer-time {
-            font-size: 16px; color: #718096; letter-spacing: 1px;
-            background: #f7fafc; padding: 8px 15px;
-            border-radius: 8px; display: inline-block; border: 1px solid #edf2f7;
-        }
-    </style>
-</head>
-<body>
-
-    <div id="home" class="profile-card active">
-        <img class="avatar" src="鞦韆咖啡.jpg" alt="頭貼">
-        <h1 class="name">ゆき</h1>
-        <p class="bio">三月とずっと一緒</p>
-        <hr style="border: 0; height: 1px; background: #e2e8f0; margin: 20px 0;">
-        <div class="media-container">
-            <img src="米漿屁股朝天.jpeg" alt="展示圖片">
-        </div>
-        <div class="section-title">🍫 ルビーちゃん　はい　何が好き</div>
-        <div class="media-container">
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/L1mFVp9IM9c" allowfullscreen></iframe>
-            </div>
-        </div>
-        
-        <div class="section-title">✨</div>
-        <div class="nav-grid">
-            <div class="nav-item" onclick="showPage('pageA')">
-                <img class="nav-img" src="大芒果.jpg" alt="介面 A">
-                <span class="nav-text">❄️ゆきちゃん</span>
-            </div>
-            <div class="nav-item" onclick="showPage('pageB')">
-                <img class="nav-img" src="吃蘋果.jpg" alt="介面 B">
-                <span class="nav-text">🌙❄️みつゆき</span>
-            </div>
-            <div class="nav-item" onclick="showPage('pageC')">
-                <img class="nav-img" src="兔女郎.png" alt="介面 C">
-                <span class="nav-text">その他</span>
-            </div>
-        </div>
-    </div>
-
-    <div id="pageA" class="profile-card">
-        <h2 class="name">❄️ゆきちゃん</h2>
-        <div class="content-box">
-            <p><strong>プロフィール</strong></p>
-            <p style="margin-top: 5px; color: #718096;">
-                <span style="color: #fe5bac; font-weight: bold;">桜田恋雪（さくらだ　こいゆき）</span><br>
-                暱稱:雪（ゆき）<br>
-                CV:小岩井ことり<br>
-                年齡:17歲<br>
-                身高:150cm->155cm（第三部後）<br>
-                體重:40kg<br>
-                生日:6/6<br>
-                星座:雙子座<br>
-                職業:學生，和一織、環、悠同班 兼職小鳥遊經紀公司的經紀人助理<br>
-                個性:呆呆的，常常將自己捲入不必要的麻煩<br>
-                <br>
-                <strong>代表物</strong><br>
-                代表符號:⌒(圓滑線)<br>
-                <span style="color: #fe5bac; font-weight: bold;">代表色：#fe5bac</span><br>
-                代表花:姬瞿麥<br>
-                代表物：雪花<br>
-                <br>
-                <strong>簡介</strong><br>
-                獨生女，父母長期在外地工作<br>
-                小時候是和泉家的鄰居<br>
-                後來父母工作搬到北海道<br>
-                17歲時，父母因為到國外工作，把她交給和泉家照顧，所以搬回東京<br>
-                目前和泉家父母是她的監護人<br>
-                <br>
-                <strong>其他</strong><br>
-                患有先天性氣喘，遇到下雨天容易呼吸困難<br>
-                因為自己一個人住，有一點怕生<br>
-            </p>
-            <img class="media-container" style="margin-top: 12px;" src="https://picsum.photos/id/1015/400/250" alt="圖片">
-        </div>
-        <div class="back-btn-group">
-            <button class="back-btn secondary" onclick="showPage('pageB')">🌙❄️</button>
-            <button class="back-btn" onclick="showPage('home')">🏠</button>
-            <button class="back-btn secondary" onclick="showPage('pageC')">その他</button>
-        </div>
-    </div>
-
-    <div id="pageB" class="profile-card">
-        <h2 class="name">🌙❄️みつゆき</h2>
-        <div class="content-box">
-            <p><strong>🍰 第二個空間：</strong></p>
-            <p style="margin-top: 5px; color: #718096;">可以用來放喜歡的連結、音樂清單，或是任何你感興趣的東西！</p>
-        </div>
-        <div class="back-btn-group">
-            <button class="back-btn secondary" onclick="showPage('pageA')">❄️</button>
-            <button class="back-btn" onclick="showPage('home')">🏠</button>
-            <button class="back-btn secondary" onclick="showPage('pageC')">その他</button>
-        </div>
-    </div>
-
-    <div id="pageC" class="profile-card">
-        <h2 class="name">その他</h2>
-        
-        <div class="content-box">
-            <p style="text-align: center; font-weight: bold; color: #4a5568; margin-bottom: 10px;">⏳一緒に過ごした時間</p>
-            <div class="timer-container">
-                <span class="timer-days" id="days-count">0<span class="timer-days-unit">天</span></span>
-                <div class="timer-time" id="time-count">00 ： 00 ： 00</div>
-            </div>
-        </div>
-        <div class="back-btn-group">
-            <button class="back-btn secondary" onclick="showPage('pageA')">❄️</button>
-            <button class="back-btn" onclick="showPage('home')">🏠</button>
-            <button class="back-btn secondary" onclick="showPage('pageB')">🌙❄️</button>
-        </div>
-    </div>
-
-    <script>
-        function showPage(pageId) {
-            const pages = document.querySelectorAll('.profile-card');
-            pages.forEach(page => { page.classList.remove('active'); });
-            document.getElementById(pageId).classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        const startDate = new Date("2021-01-11T00:00:00").getTime();
-        function updateTimer() {
-            const now = new Date().getTime();
-            const diff = now - startDate;
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const secs = Math.floor((diff % (1000 * 60)) / 1000);
-            const fH = hours < 10 ? "0" + hours : hours;
-            const fM = mins < 10 ? "0" + mins : mins;
-            const fS = secs < 10 ? "0" + secs : secs;
-            
-            const daysEl = document.getElementById("days-count");
-            const timeEl = document.getElementById("time-count");
-            if (daysEl && timeEl) {
-                daysEl.innerHTML = days + '<span class="timer-days-unit">天</span>';
-                // 這裡幫你把跳動的時分秒改成你要求的「 ： 」格式
-                timeEl.innerText = `${fH} ： ${fM} ： ${fS}`;
-            }
-        }
-        updateTimer();
-        setInterval(updateTimer, 1000);
-    </script>
-</body>
-</html>
+        .timer-days { font-size: 48px; font-weight: bold; color: #
