@@ -104,9 +104,11 @@
             justify-content: center;
             margin-top: 20px;
         }
+        
+        /* 🏠 主頁按鈕樣式修改 */
         .back-btn {
             padding: 10px 16px;
-            background: #ff9a9e;
+            background: #fe5bac; /* 👈 首頁按鈕換成 #fe5bac */
             color: white;
             border: none;
             border-radius: 50px;
@@ -114,11 +116,20 @@
             cursor: pointer;
             font-size: 12px;
             transition: 0.2s;
-            box-shadow: 0 2px 6px rgba(255, 154, 158, 0.2);
+            box-shadow: 0 2px 6px rgba(254, 91, 172, 0.3);
         }
-        .back-btn:hover { background: #fe5bac; }
-        .back-btn.secondary { background: #a1c4fd; box-shadow: 0 2px 6px rgba(161, 196, 253, 0.3); }
-        .back-btn.secondary:hover { background: #764ba2; }
+        .back-btn:hover {
+            background: #d63d8c; /* 懸停時稍微深一點的粉色 */
+        }
+        
+        /* ❄️ 切換介面按鈕樣式修改 */
+        .back-btn.secondary {
+            background: #ff9000; /* 👈 切換介面按鈕換成 #ff9000 */
+            box-shadow: 0 2px 6px rgba(255, 144, 0, 0.3);
+        }
+        .back-btn.secondary:hover {
+            background: #cc7300; /* 懸停時稍微深一點的橘色 */
+        }
 
         /* 計時器樣式 */
         .timer-container { text-align: center; padding: 10px 0; }
