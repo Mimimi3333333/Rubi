@@ -72,22 +72,26 @@
         .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-        /* 圖文按鈕網格 */
+        /* ✨ 修正：更改為三欄網格，讓三個按鈕擠在同一行 ✨ */
         .nav-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            grid-template-columns: 1fr 1fr 1fr; /* 👈 改成 3 欄 */
+            gap: 10px; /* 縮小間距，讓手機版排版更舒適 */
             margin-top: 15px;
         }
         .nav-item {
             text-decoration: none; background: white;
-            border-radius: 14px; overflow: hidden;
+            border-radius: 12px; overflow: hidden;
             border: 1px solid #e2e8f0; transition: all 0.2s ease;
             cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
         .nav-item:hover { transform: translateY(-4px); box-shadow: 0 6px 12px rgba(254, 91, 172, 0.15); border-color: #fecfef; }
-        .nav-img { width: 100%; height: 100px; object-fit: cover; display: block; }
-        .nav-text { padding: 10px; color: #4a5568; font-weight: bold; display: block; font-size: 14px; }
+        
+        /* 稍微縮小按鈕內的圖片高度，避免太長 */
+        .nav-img { width: 100%; height: 75px; object-fit: cover; display: block; }
+        
+        /* 稍微縮小按鈕文字大小，確保手機上不會換行擠歪 */
+        .nav-text { padding: 8px 5px; color: #4a5568; font-weight: bold; display: block; font-size: 12px; }
 
         /* 展示盒 */
         .content-box {
@@ -134,19 +138,20 @@
                 <iframe src="https://www.youtube.com/embed/L1mFVp9IM9c" allowfullscreen></iframe>
             </div>
         </div>
+        
         <div class="section-title">✨ 切換介面</div>
         <div class="nav-grid">
             <div class="nav-item" onclick="showPage('pageA')">
                 <img class="nav-img" src="https://picsum.photos/id/1025/300/200" alt="介面 A">
-                <span class="nav-text">進入介面 A</span>
+                <span class="nav-text">介面 A</span>
             </div>
             <div class="nav-item" onclick="showPage('pageB')">
                 <img class="nav-img" src="https://picsum.photos/id/1026/300/200" alt="介面 B">
-                <span class="nav-text">進入介面 B</span>
+                <span class="nav-text">介面 B</span>
             </div>
             <div class="nav-item" onclick="showPage('pageC')">
                 <img class="nav-img" src="https://picsum.photos/id/1027/300/200" alt="介面 C">
-                <span class="nav-text">進入介面 C</span>
+                <span class="nav-text">介面 C</span>
             </div>
         </div>
     </div>
@@ -197,7 +202,6 @@
     </div>
 
     <script>
-        // 切換介面
         function showPage(pageId) {
             const pages = document.querySelectorAll('.profile-card');
             pages.forEach(page => { page.classList.remove('active'); });
@@ -205,7 +209,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 計時器邏輯（對應到介面 C 的 days-count 和 time-count）
         const startDate = new Date("2021-01-11T00:00:00").getTime();
         function updateTimer() {
             const now = new Date().getTime();
@@ -218,7 +221,6 @@
             const fM = mins < 10 ? "0" + mins : mins;
             const fS = secs < 10 ? "0" + secs : secs;
             
-            // 安全檢查：確保畫面上找得到這兩個元素才渲染（避免切換時 JavaScript 報錯）
             const daysEl = document.getElementById("days-count");
             const timeEl = document.getElementById("time-count");
             if (daysEl && timeEl) {
