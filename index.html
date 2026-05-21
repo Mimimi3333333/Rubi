@@ -105,10 +105,10 @@
             margin-top: 20px;
         }
         
-        /* 🏠 主頁按鈕樣式修改 */
+        /* 🏠 主頁按鈕樣式 */
         .back-btn {
             padding: 10px 16px;
-            background: #fe5bac; /* 👈 首頁按鈕換成 #fe5bac */
+            background: #fe5bac;
             color: white;
             border: none;
             border-radius: 50px;
@@ -118,18 +118,14 @@
             transition: 0.2s;
             box-shadow: 0 2px 6px rgba(254, 91, 172, 0.3);
         }
-        .back-btn:hover {
-            background: #d63d8c; /* 懸停時稍微深一點的粉色 */
-        }
+        .back-btn:hover { background: #d63d8c; }
         
-        /* ❄️ 切換介面按鈕樣式修改 */
+        /* ❄️ 切換介面按鈕樣式 */
         .back-btn.secondary {
-            background: #ff9000; /* 👈 切換介面按鈕換成 #ff9000 */
+            background: #ff9000;
             box-shadow: 0 2px 6px rgba(255, 144, 0, 0.3);
         }
-        .back-btn.secondary:hover {
-            background: #cc7300; /* 懸停時稍微深一點的橘色 */
-        }
+        .back-btn.secondary:hover { background: #cc7300; }
 
         /* 計時器樣式 */
         .timer-container { text-align: center; padding: 10px 0; }
@@ -272,7 +268,8 @@
             const timeEl = document.getElementById("time-count");
             if (daysEl && timeEl) {
                 daysEl.innerHTML = days + '<span class="timer-days-unit">天</span>';
-                timeEl.innerText = `${fH} 小時 ${fM} 分鐘 ${fS} 秒`;
+                // 這裡幫你把跳動的時分秒改成你要求的「 ： 」格式
+                timeEl.innerText = `${fH} ： ${fM} ： ${fS}`;
             }
         }
         updateTimer();
