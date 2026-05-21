@@ -13,7 +13,7 @@
             font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif;
         }
 
-        /* 網頁背景：在此處更換背景圖片 URL，或改為 linear-gradient 漸層色 */
+        /* 網頁背景 */
        body {
             background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
             background-attachment: fixed;
@@ -36,10 +36,9 @@
             padding: 30px 20px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            display: none; /* 預設先隱藏所有介面，交由 JS 控制 */
+            display: none; /* 預設先隱藏 */
         }
 
-        /* 顯示狀態：當前被激活的介面會顯示出來，並帶有流暢淡入動畫 */
         .active {
             display: block;
             animation: fadeIn 0.4s ease-out;
@@ -50,298 +49,185 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* 大頭貼設定 */
+        /* 大頭貼 */
         .avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
+            width: 120px; height: 120px;
+            border-radius: 50%; object-fit: cover;
             border: 4px solid #fff;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             margin-bottom: 15px;
         }
 
-        /* 名字與簡介 */
-        .name {
-            font-size: 24px;
-            font-weight: bold;
-            color: #2d3748;
-            margin-bottom: 5px;
-        }
+        .name { font-size: 24px; font-weight: bold; color: #2d3748; margin-bottom: 5px; }
+        .bio { font-size: 14px; color: #718096; margin-bottom: 25px; line-height: 1.5; }
+        .section-title { font-size: 16px; color: #4a5568; text-align: left; margin: 15px 10px 8px 10px; font-weight: bold; }
 
-        .bio {
-            font-size: 14px;
-            color: #718096;
-            margin-bottom: 25px;
-            line-height: 1.5;
-        }
-
-        /* 內容區塊標題 */
-        .section-title {
-            font-size: 16px;
-            color: #4a5568;
-            text-align: left;
-            margin: 15px 10px 8px 10px;
-            font-weight: bold;
-        }
-
-        /* 圖片與影片容器 */
+        /* 媒體容器 */
         .media-container {
-            width: 100%;
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 15px;
+            width: 100%; border-radius: 12px;
+            overflow: hidden; margin-bottom: 15px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
+        .media-container img { width: 100%; display: block; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-        .media-container img {
-            width: 100%;
-            display: block;
-        }
-
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 比例 */
-            height: 0;
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        /* 圖文按鈕網格排版 */
+        /* 圖文按鈕網格 */
         .nav-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
             margin-top: 15px;
         }
-        
         .nav-item {
-            text-decoration: none;
-            background: white;
-            border-radius: 14px;
-            overflow: hidden;
-            border: 1px solid #e2e8f0;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            text-decoration: none; background: white;
+            border-radius: 14px; overflow: hidden;
+            border: 1px solid #e2e8f0; transition: all 0.2s ease;
+            cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
+        .nav-item:hover { transform: translateY(-4px); box-shadow: 0 6px 12px rgba(254, 91, 172, 0.15); border-color: #fecfef; }
+        .nav-img { width: 100%; height: 100px; object-fit: cover; display: block; }
+        .nav-text { padding: 10px; color: #4a5568; font-weight: bold; display: block; font-size: 14px; }
 
-        .nav-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 12px rgba(254, 91, 172, 0.15);
-            border-color: #fecfef;
-        }
-
-        .nav-img {
-            width: 100%;
-            height: 100px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .nav-text {
-            padding: 10px;
-            color: #4a5568;
-            font-weight: bold;
-            display: block;
-            font-size: 14px;
-        }
-
-        /* 新介面的專屬文字展示盒 */
+        /* 展示盒 */
         .content-box {
-            background: white;
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 15px;
-            text-align: left;
-            border: 1px solid #e2e8f0;
-            color: #4a5568;
-            font-size: 14px;
-            line-height: 1.6;
+            background: white; border-radius: 12px;
+            padding: 15px; margin-bottom: 15px;
+            text-align: left; border: 1px solid #e2e8f0;
+            color: #4a5568; font-size: 14px; line-height: 1.6;
         }
 
-        /* 新介面的導航控制按鈕 */
-        .back-btn-group {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
+        /* 導航按鈕 */
+        .back-btn-group { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 20px; }
         .back-btn {
-            padding: 12px 24px;
-            background: #ff9a9e;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background 0.2s;
-            box-shadow: 0 2px 6px rgba(255, 154, 158, 0.3);
+            padding: 10px 20px; background: #ff9a9e;
+            color: white; border: none; border-radius: 50px;
+            font-weight: bold; cursor: pointer; font-size: 13px;
+            transition: 0.2s; box-shadow: 0 2px 6px rgba(255, 154, 158, 0.3);
         }
+        .back-btn:hover { background: #fe5bac; }
 
-        .back-btn:hover {
-            background: #fe5bac;
-        }
-
-        /* ⏳ 計時器專屬樣式 ⏳ */
-        .timer-container {
-            text-align: center;
-            padding: 10px 0;
-        }
-        
-        /* 天數大字樣式 */
-        .timer-days {
-            font-size: 48px;
-            font-weight: bold;
-            color: #fe5bac; /* 配合你設定的粉色系 */
-            display: block;
-            margin-bottom: 5px;
-        }
-        
-        .timer-days-unit {
-            font-size: 18px;
-            color: #4a5568;
-            font-weight: normal;
-            margin-left: 4px;
-        }
-
-        /* 時分秒小字樣式 */
+        /* 計時器樣式 */
+        .timer-container { text-align: center; padding: 10px 0; }
+        .timer-days { font-size: 48px; font-weight: bold; color: #fe5bac; display: block; margin-bottom: 5px; }
+        .timer-days-unit { font-size: 18px; color: #4a5568; font-weight: normal; margin-left: 4px; }
         .timer-time {
-            font-size: 16px;
-            color: #718096;
-            letter-spacing: 1px;
-            background: #f7fafc;
-            padding: 8px 15px;
-            border-radius: 8px;
-            display: inline-block;
-            border: 1px solid #edf2f7;
+            font-size: 16px; color: #718096; letter-spacing: 1px;
+            background: #f7fafc; padding: 8px 15px;
+            border-radius: 8px; display: inline-block; border: 1px solid #edf2f7;
         }
     </style>
 </head>
 <body>
 
     <div id="home" class="profile-card active">
-        <img class="avatar" src="鞦韆咖啡.jpg" alt="個人頭貼">
-        
+        <img class="avatar" src="鞦韆咖啡.jpg" alt="頭貼">
         <h1 class="name">ゆき</h1>
         <p class="bio">三月とずっと一緒</p>
-        
         <hr style="border: 0; height: 1px; background: #e2e8f0; margin: 20px 0;">
-
         <div class="media-container">
             <img src="米漿屁股朝天.jpeg" alt="展示圖片">
         </div>
-
         <div class="section-title">🍫 ルビーちゃん　はい　何が好き</div>
         <div class="media-container">
             <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/L1mFVp9IM9c" allowfullscreen></iframe>
             </div>
         </div>
-
         <div class="section-title">✨ 切換介面</div>
         <div class="nav-grid">
             <div class="nav-item" onclick="showPage('pageA')">
-                <img class="nav-img" src="https://picsum.photos/id/1025/300/200" alt="介面 A 封面">
+                <img class="nav-img" src="https://picsum.photos/id/1025/300/200" alt="介面 A">
                 <span class="nav-text">進入介面 A</span>
             </div>
             <div class="nav-item" onclick="showPage('pageB')">
-                <img class="nav-img" src="https://picsum.photos/id/1026/300/200" alt="介面 B 封面">
+                <img class="nav-img" src="https://picsum.photos/id/1026/300/200" alt="介面 B">
                 <span class="nav-text">進入介面 B</span>
+            </div>
+            <div class="nav-item" onclick="showPage('pageC')">
+                <img class="nav-img" src="https://picsum.photos/id/1027/300/200" alt="介面 C">
+                <span class="nav-text">進入介面 C</span>
             </div>
         </div>
     </div>
 
-
     <div id="pageA" class="profile-card">
         <h2 class="name">介面 A - 專屬小空間</h2>
-        <p class="bio">你可以在這裡放你想新增的第二份內容</p>
-        
+        <p class="bio">你可以在這裡放你想新增的內容</p>
         <div class="content-box">
-            <p><strong>✨ 這裡可以任意添加文字或介紹：</strong></p>
-            <p style="margin-top: 5px; color: #718096;">用手機點擊 GitHub App 打開這個檔案，找到 id="pageA" 的區塊就可以直接改這裡的字喔！</p>
-            <img class="media-container" style="margin-top: 12px;" src="https://picsum.photos/id/1015/400/250" alt="介面 A 專屬圖">
+            <p><strong>✨ 第一個空間：</strong></p>
+            <p style="margin-top: 5px; color: #718096;">這裡可以用來放個人作品、心情小語或是長篇介紹。</p>
+            <img class="media-container" style="margin-top: 12px;" src="https://picsum.photos/id/1015/400/250" alt="圖片">
         </div>
-
         <div class="back-btn-group">
             <button class="back-btn" onclick="showPage('home')">🏠 回首頁</button>
             <button class="back-btn" style="background: #a1c4fd;" onclick="showPage('pageB')">➡️ 去介面 B</button>
         </div>
     </div>
 
-
     <div id="pageB" class="profile-card">
-        <h2 class="name">介面 B - 收藏與筆記</h2>
-        <p class="bio">第三個展示空間</p>
+        <h2 class="name">介面 B - 收藏清單</h2>
+        <p class="bio">第二個展示空間</p>
+        <div class="content-box">
+            <p><strong>🍰 第二個空間：</strong></p>
+            <p style="margin-top: 5px; color: #718096;">可以用來放喜歡的連結、音樂清單，或是任何你感興趣的東西！</p>
+        </div>
+        <div class="back-btn-group">
+            <button class="back-btn" onclick="showPage('home')">🏠 回首頁</button>
+            <button class="back-btn" style="background: #a1c4fd;" onclick="showPage('pageC')">➡️ 去介面 C</button>
+        </div>
+    </div>
+
+    <div id="pageC" class="profile-card">
+        <h2 class="name">介面 C - 築夢空間</h2>
+        <p class="bio">紀錄從 2021-01-11 開始的每一天</p>
         
         <div class="content-box">
             <p style="text-align: center; font-weight: bold; color: #4a5568; margin-bottom: 10px;">⏳ 築夢計時器</p>
-            
             <div class="timer-container">
                 <span class="timer-days" id="days-count">0<span class="timer-days-unit">天</span></span>
                 <div class="timer-time" id="time-count">00 小時 00 分鐘 00 秒</div>
             </div>
         </div>
 
-        <div class="content-box">
-            <p><strong>🍰 這裡可以放你想放的其他東西：</strong></p>
-            <p style="margin-top: 5px; color: #718096;">像是清單、或者是其他的連結與音樂紀錄。</p>
-        </div>
-
         <div class="back-btn-group">
-            <button class="back-btn" style="background: #a1c4fd;" onclick="showPage('pageA')">⬅️ 去介面 A</button>
             <button class="back-btn" onclick="showPage('home')">🏠 回首頁</button>
+            <button class="back-btn" style="background: #a1c4fd;" onclick="showPage('pageA')">➡️ 去介面 A</button>
         </div>
     </div>
 
-
     <script>
-        // 介面切換邏輯
+        // 切換介面
         function showPage(pageId) {
             const pages = document.querySelectorAll('.profile-card');
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
+            pages.forEach(page => { page.classList.remove('active'); });
             document.getElementById(pageId).classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // ⏳ 2021-01-11 計時器邏輯 ⏳
+        // 計時器邏輯（對應到介面 C 的 days-count 和 time-count）
         const startDate = new Date("2021-01-11T00:00:00").getTime();
-
         function updateTimer() {
             const now = new Date().getTime();
-            const difference = now - startDate;
-
-            // 計算 天、時、分、秒
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-            // 補零功能（例如：5秒變成 05秒）
-            const formatHours = hours < 10 ? "0" + hours : hours;
-            const formatMinutes = minutes < 10 ? "0" + minutes : minutes;
-            const formatSeconds = seconds < 10 ? "0" + seconds : seconds;
-
-            // 渲染到網頁畫面上
-            document.getElementById("days-count").innerHTML = days + '<span class="timer-days-unit">天</span>';
-            document.getElementById("time-count").innerText = `${formatHours} 小時 ${formatMinutes} 分鐘 ${formatSeconds} 秒`;
+            const diff = now - startDate;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+            const fH = hours < 10 ? "0" + hours : hours;
+            const fM = mins < 10 ? "0" + mins : mins;
+            const fS = secs < 10 ? "0" + secs : secs;
+            
+            // 安全檢查：確保畫面上找得到這兩個元素才渲染（避免切換時 JavaScript 報錯）
+            const daysEl = document.getElementById("days-count");
+            const timeEl = document.getElementById("time-count");
+            if (daysEl && timeEl) {
+                daysEl.innerHTML = days + '<span class="timer-days-unit">天</span>';
+                timeEl.innerText = `${fH} 小時 ${fM} 分鐘 ${fS} 秒`;
+            }
         }
-
-        // 啟動計時器並設定每秒(1000毫秒)更新一次
         updateTimer();
         setInterval(updateTimer, 1000);
     </script>
-
 </body>
 </html>
